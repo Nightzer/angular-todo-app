@@ -1,0 +1,40 @@
+<section>
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>
+                Add Todo
+            </mat-card-title>
+        </mat-card-header>
+        
+        <mat-card-content>
+            <mat-form-field>
+                <mat-label>Add Todo</mat-label>
+                <input matInput type="text" #todoText>
+            </mat-form-field>
+            <button mat-flat-button (click)="addTask(todoText.value)">Add</button>
+        </mat-card-content>
+    </mat-card>
+    
+    <mat-divider></mat-divider>
+
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>
+                TODO
+            </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <mat-list role="list">
+                <mat-list-item *ngFor="let todoItem of todoList">
+                    <mat-slide-toggle [checked]="todoItem.completed" (change)="toggleCompleted(todoItem.date)">
+                        Completed!
+                    </mat-slide-toggle>
+                    {{todoItem.task}}
+                    <button mat-button (click)="deleteTask(todoItem.date)">
+                        Delete
+                    </button>
+                </mat-list-item>
+            </mat-list>
+        </mat-card-content>
+    </mat-card>
+</section>
